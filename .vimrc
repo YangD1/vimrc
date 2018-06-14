@@ -20,6 +20,18 @@ set hlsearch
 
 " 插件项目
 call plug#begin('~/.vim/plugged')
+" markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+" nerdtree git
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+
+" 插件配置
+" NERDTree config
+ map <F2> :NERDTreeToggle<CR>
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
