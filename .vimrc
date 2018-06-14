@@ -4,3 +4,22 @@ set nu
 set ts=4
 set expandtab
 set autoindent
+" 禁止显示滚动条
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+" 禁止显示菜单和工具条
+set guioptions-=m
+set guioptions-=T
+" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
+" 高亮显示搜索结果
+set hlsearch
+
+" 插件项目
+call plug#begin('~/.vim/plugged')
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+call plug#end()
