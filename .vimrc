@@ -17,6 +17,11 @@ set cursorline
 set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
+" 配置solarized 主题
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+colorscheme solarized
 
 " 插件项目
 call plug#begin('~/.vim/plugged')
