@@ -4,7 +4,7 @@ set enc=utf8
 set fencs=utf8,gbk,gb2312,gb18030
 set cursorline
 set nu
-set ts=4
+set ts=2
 set expandtab
 set autoindent
 " 禁止显示滚动条
