@@ -1,10 +1,10 @@
 ```bash
 # copy .vim for user root directory
 cd vimrc
-cp .vim ~/
+cp -r .vim ~/
 
-# copy .vim for user root directory
-copy vimrc/.vimrc ~/.vimrc
+# copy .vimrc for user root directory
+cp .vimrc ~
 
 # edit any file
 vim anyFile
