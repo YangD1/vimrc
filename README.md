@@ -4,7 +4,7 @@ cd vimrc
 cp -r .vim ~/
 
 # copy .vimrc for user root directory
-cp .vimrc ~
+cp .vimrc ~/
 
 # edit any file
 vim anyFile
