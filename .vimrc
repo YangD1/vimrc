@@ -41,7 +41,7 @@ set ignorecase
 set smartcase
 " 设置主题
 syntax enable
-colorscheme monokai
+colorscheme forest-night
 " 自动设置目录
 set autochdir
 " 如果行尾有多余的空格（包括 Tab 键），该配置将让这些空格显示成可见的小方块。
@@ -56,6 +56,13 @@ call plug#begin('~/.vim/plugged')
 " markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" 打开/关闭预览
+" :MarkdownPreviewToggel
+" 指定浏览器路径
+let g:mkdp_path_to_chrome = "path/of/chrome"
+" 指定预览主题，默认Github
+let g:mkdp_markdown_css=''
 " nerdtree git
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -65,13 +72,27 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-hybrid-material'
 " gitgutter
 Plug 'airblade/vim-gitgutter'
-
+" 图片粘贴插件
+Plug 'ferrine/md-img-paste.vim'
+" 自定义vim欢迎页
+Plug 'mhinz/vim-startify'
+" 支持更多的高亮语法
+Plug 'sheerun/vim-polyglot'
+" 主题：https://github.com/sainnhe/forest-night
+Plug 'sainnhe/forest-night'
+"设置默认储存文件夹。这里表示储存在当前文档所在文件夹下的'pic'文件夹下，相当于 ./pic/
+let g:mdip_imgdir = 'pic'
+"设置默认图片名称。当图片名称没有给出时，使用默认图片名称
+let g:mdip_imgname = 'image'
+"设置快捷键，个人喜欢 Ctrl+p 的方式，比较直观
+autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>F%i
+" 高亮数学公式
+let g:vim_markdown_math = 1
 call plug#end()
-
 " 插件配置
 " NERDTree config
  map <F2> :NERDTreeToggle<CR>
- autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+ autocmd bufenter *  if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
  " airline
  let g:airline#extensions#tabline#enabled = 1
