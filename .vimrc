@@ -31,6 +31,13 @@ set incsearch
 set background=dark
 " ctrlp 文件跳转
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_user_command = 'cd %s;
+  \ commonfilter="\.(jpg|bmp|png|jar|7z|zip|tar|gz|tgz|bz)$";
+  \ if [ ! -r ".ctrlpignore" ]; then
+  \   find . -type f | grep -Evi "$commonfilter";
+  \ else
+  \   find . -type f | grep -vF "$(cat .ctrlpignore)" | grep -Evi "$commonfilter";
+  \ fi'
 " 不自动折行
 set nowrap
 " 设置字体
@@ -66,6 +73,8 @@ let g:mkdp_markdown_css=''
 " nerdtree git
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" CoC https://github.com/neoclide/coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -84,17 +93,17 @@ Plug 'sainnhe/forest-night'
 let g:mdip_imgdir = 'pic'
 "设置默认图片名称。当图片名称没有给出时，使用默认图片名称
 let g:mdip_imgname = 'image'
-"设置快捷键，个人喜欢 Ctrl+p 的方式，比较直观
-autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>F%i
 " 高亮数学公式
 let g:vim_markdown_math = 1
 call plug#end()
 " 插件配置
+"设置快捷键，个人喜欢 Ctrl+p 的方式，比较直观
+autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>F%i
 " NERDTree config
- map <F2> :NERDTreeToggle<CR>
- autocmd bufenter *  if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter *  if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDTreeShowHidden=1
- " airline
- let g:airline#extensions#tabline#enabled = 1
- let g:airline#extensions#tabline#left_sep = ' '
- let g:airline#extensions#tabline#left_alt_sep = '|'
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
